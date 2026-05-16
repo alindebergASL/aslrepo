@@ -122,6 +122,15 @@ p {
   transform: translateY(0);
 }
 
+:focus-visible {
+  outline: 2px solid rgba(132, 224, 255, 0.95);
+  outline-offset: 4px;
+}
+
+.skip-link:focus-visible {
+  outline-offset: 2px;
+}
+
 .container {
   width: min(100% - 40px, var(--container));
   margin-inline: auto;
