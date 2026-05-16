@@ -87,27 +87,77 @@
     bar.className = "read-progress";
     bar.setAttribute("role", "progressbar");
     bar.setAttribute("aria-label", "Reading progress");
+    bar.setAttribute("aria-valuemin", "0");
+    bar.setAttribute("aria-valuemax", "100");
+    bar.setAttribute("aria-valuenow", "0");
     document.body.appendChild(bar);
+
+    function clamp(v, lo, hi) {
+      return v < lo ? lo : v > hi ? hi : v;
+    }
+
+    // Walk the offsetParent chain to get the article body's absolute top
+    // in document coordinates. Cached and recomputed on resize / load so
+    // the scroll handler is a cheap math op instead of a layout read.
+    function getOffsetTop(el) {
+      var top = 0;
+      var n = el;
+      while (n) {
+        top += n.offsetTop || 0;
+        n = n.offsetParent;
+      }
+      return top;
+    }
+
+    var articleTop = 0;
+    var articleHeight = 0;
+
+    function measure() {
+      articleTop = getOffsetTop(body);
+      articleHeight = body.offsetHeight || 0;
+    }
 
     var ticking = false;
     function update() {
-      var rect = body.getBoundingClientRect();
-      var viewport = window.innerHeight || docEl.clientHeight;
-      var total = Math.max(1, rect.height - viewport);
-      var scrolled = Math.min(Math.max(-rect.top, 0), total);
-      var pct = scrolled / total;
+      var viewport = window.innerHeight || docEl.clientHeight || 0;
+      var start = articleTop - viewport * 0.15;
+      var end = articleTop + articleHeight - viewport * 0.85;
+      var range = Math.max(1, end - start);
+      var scrollY =
+        window.scrollY ||
+        window.pageYOffset ||
+        (document.scrollingElement && document.scrollingElement.scrollTop) ||
+        docEl.scrollTop ||
+        0;
+      var pct = clamp((scrollY - start) / range, 0, 1);
       bar.style.transform = "scaleX(" + pct.toFixed(4) + ")";
+      bar.setAttribute("aria-valuenow", String(Math.round(pct * 100)));
       ticking = false;
     }
-    function onScroll() {
+
+    function schedule() {
       if (!ticking) {
         window.requestAnimationFrame(update);
         ticking = true;
       }
     }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+
+    function onResize() {
+      measure();
+      schedule();
+    }
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("load", onResize);
+
+    measure();
     update();
+
+    // Web fonts and reveal animations can shift article height shortly
+    // after first paint. Re-measure after layout has settled.
+    window.setTimeout(onResize, 250);
+    window.setTimeout(onResize, 1500);
   }
 
   function setupTagFilter() {
