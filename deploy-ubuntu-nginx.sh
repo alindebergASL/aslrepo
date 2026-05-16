@@ -63,5 +63,16 @@ ln -sfn "${SITE_AVAILABLE}" "${SITE_ENABLED}"
 nginx -t
 systemctl reload nginx || systemctl restart nginx
 
+# This script rewrites the nginx site from source control on each deploy.
+# If Certbot has already provisioned HTTPS for the domain, immediately let
+# Certbot re-apply its managed 443 server blocks and HTTP->HTTPS redirect so
+# routine content deploys do not accidentally drop TLS.
+if [[ -d "/etc/letsencrypt/live/${DOMAIN}" ]] && command -v certbot >/dev/null 2>&1; then
+  certbot --nginx -d "${DOMAIN}" -d "www.${DOMAIN}" \
+    --non-interactive --agree-tos --register-unsafely-without-email --redirect
+  nginx -t
+  systemctl reload nginx || systemctl restart nginx
+fi
+
 echo "Deployed to ${TARGET_DIR}"
 echo "Nginx site enabled for ${DOMAIN}"
