@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>DOMAIN_PLACEHOLDER/</loc>
+    <loc>https://ai-lab1.com/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>DOMAIN_PLACEHOLDER/articles/</loc>
+    <loc>https://ai-lab1.com/articles/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>DOMAIN_PLACEHOLDER/articles/ai-adoption-partner-ecosystem/</loc>
+    <loc>https://ai-lab1.com/articles/ai-adoption-partner-ecosystem/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

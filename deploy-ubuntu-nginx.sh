@@ -29,19 +29,35 @@ fi
 
 install -d -m 0755 "${TARGET_DIR}"
 
-for item in index.html articles styles.css site.js robots.txt sitemap.xml og-image.svg; do
+for item in \
+    index.html \
+    404.html \
+    articles \
+    styles.css \
+    site.js \
+    robots.txt \
+    sitemap.xml \
+    feed.xml \
+    og-image.svg \
+    og-image.png \
+    favicon.svg \
+    favicon.ico \
+    apple-touch-icon.png \
+    site.webmanifest; do
   if [[ -e "${SCRIPT_DIR}/${item}" ]]; then
     cp -R "${SCRIPT_DIR}/${item}" "${TARGET_DIR}/"
   fi
 done
 
-find "${TARGET_DIR}" -type f \( -name "*.html" -o -name "*.xml" -o -name "*.txt" -o -name "*.svg" \) -exec sed -i "s#DOMAIN_PLACEHOLDER#${DOMAIN}#g" {} +
+# Domain is already baked into the source files (ai-lab1.com). Keep this
+# sed in place as a no-op safety net in case anyone reintroduces a placeholder.
+find "${TARGET_DIR}" -type f \( -name "*.html" -o -name "*.xml" -o -name "*.txt" -o -name "*.svg" -o -name "*.webmanifest" \) -exec sed -i "s#DOMAIN_PLACEHOLDER#${DOMAIN}#g" {} +
 
 chown -R www-data:www-data "${TARGET_DIR}"
 find "${TARGET_DIR}" -type d -exec chmod 755 {} \;
 find "${TARGET_DIR}" -type f -exec chmod 644 {} \;
 
-sed "s#DOMAIN_PLACEHOLDER#${DOMAIN}#g" "${SCRIPT_DIR}/nginx-site.conf" > "${SITE_AVAILABLE}"
+cp "${SCRIPT_DIR}/nginx-site.conf" "${SITE_AVAILABLE}"
 ln -sfn "${SITE_AVAILABLE}" "${SITE_ENABLED}"
 
 nginx -t

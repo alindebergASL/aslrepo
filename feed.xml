@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Andrew Lindeberg — Writing</title>
+  <subtitle>Essays and field notes on enterprise AI adoption, partner ecosystems, AI agents, infrastructure, security, and the translation layer between technical capability and business value.</subtitle>
+  <link href="https://ai-lab1.com/feed.xml" rel="self"/>
+  <link href="https://ai-lab1.com/" rel="alternate"/>
+  <id>https://ai-lab1.com/</id>
+  <updated>2026-05-16T00:00:00Z</updated>
+  <author>
+    <name>Andrew Lindeberg</name>
+    <uri>https://ai-lab1.com/</uri>
+  </author>
+  <rights>© 2026 Andrew Lindeberg</rights>
+
+  <entry>
+    <title>Why AI Adoption Is a Partner Ecosystem Problem, Not Just a Product Problem</title>
+    <link href="https://ai-lab1.com/articles/ai-adoption-partner-ecosystem/" rel="alternate"/>
+    <id>https://ai-lab1.com/articles/ai-adoption-partner-ecosystem/</id>
+    <published>2026-05-01T00:00:00Z</published>
+    <updated>2026-05-16T00:00:00Z</updated>
+    <author>
+      <name>Andrew Lindeberg</name>
+    </author>
+    <category term="Enterprise AI"/>
+    <category term="Partner Ecosystems"/>
+    <category term="AI Adoption"/>
+    <summary>What enterprise technology taught me about how AI will actually get bought, deployed, governed, and scaled.</summary>
+  </entry>
+</feed>

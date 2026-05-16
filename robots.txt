@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: DOMAIN_PLACEHOLDER/sitemap.xml
+Sitemap: https://ai-lab1.com/sitemap.xml

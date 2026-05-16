@@ -1,0 +1,14 @@
+{
+  "name": "Andrew Lindeberg",
+  "short_name": "AL",
+  "description": "Andrew Lindeberg on enterprise AI adoption, partner ecosystems, AI agents, infrastructure, and the translation layer between technical capability and business value.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#090a0c",
+  "theme_color": "#090a0c",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any" }
+  ]
+}

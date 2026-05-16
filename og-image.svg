@@ -1,27 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Andrew Lindeberg</title>
-  <desc id="desc">Abstract dark editorial preview image for enterprise AI adoption and partner ecosystems.</desc>
+  <title id="title">Andrew Lindeberg — Enterprise AI adoption and partner ecosystems</title>
+  <desc id="desc">Editorial preview image. Dark background with teal aurora glow, fine grid lines, and serif headline.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#090a0c"/>
-      <stop offset="52%" stop-color="#101618"/>
+    <radialGradient id="aurora" cx="0.18" cy="0.12" r="0.8">
+      <stop offset="0%" stop-color="#75e6c3" stop-opacity="0.32"/>
+      <stop offset="50%" stop-color="#42c8a2" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#090a0c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0c0e"/>
+      <stop offset="50%" stop-color="#0e1214"/>
       <stop offset="100%" stop-color="#090a0c"/>
     </linearGradient>
-    <linearGradient id="line" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0%" stop-color="#75e6c3" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#d5b46a" stop-opacity="0.85"/>
+    <linearGradient id="hairline" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#75e6c3" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#75e6c3" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d5b46a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="markStroke" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#75e6c3"/>
+      <stop offset="100%" stop-color="#42c8a2"/>
     </linearGradient>
   </defs>
+
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <path d="M90 440 C 245 350, 360 490, 510 380 S 785 210, 1110 250" fill="none" stroke="url(#line)" stroke-width="3" opacity="0.85"/>
-  <path d="M90 490 C 255 410, 405 510, 575 405 S 825 300, 1110 332" fill="none" stroke="#75e6c3" stroke-width="1.5" opacity="0.28"/>
-  <g fill="none" stroke="#f4efe7" stroke-opacity="0.12">
-    <rect x="70" y="70" width="1060" height="490" rx="8"/>
-    <path d="M150 70v490M1050 70v490M70 150h1060M70 480h1060"/>
+  <rect width="1200" height="630" fill="url(#aurora)"/>
+
+  <g stroke="#f4efe7" stroke-opacity="0.05" fill="none">
+    <rect x="80" y="80" width="1040" height="470" rx="10"/>
+    <path d="M80 200 H1120 M80 460 H1120"/>
   </g>
-  <circle cx="150" cy="150" r="38" fill="#75e6c3" fill-opacity="0.1" stroke="#75e6c3" stroke-opacity="0.45"/>
-  <text x="205" y="156" fill="#f4efe7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26" font-weight="700">Andrew Lindeberg</text>
-  <text x="150" y="292" fill="#f4efe7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="58" font-weight="800">Enterprise AI adoption</text>
-  <text x="150" y="362" fill="#f4efe7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="58" font-weight="800">through partner ecosystems</text>
-  <text x="150" y="435" fill="#b7c0bb" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26">Technical capability translated into business value.</text>
+
+  <g transform="translate(110, 130)">
+    <circle cx="22" cy="22" r="22" fill="none" stroke="url(#markStroke)" stroke-width="1.4" opacity="0.7"/>
+    <text x="22" y="30" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="20" fill="#75e6c3" letter-spacing="-0.5">AL</text>
+    <text x="60" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="600" fill="#f4efe7" letter-spacing="0.5">Andrew Lindeberg</text>
+  </g>
+
+  <text x="110" y="320" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">Enterprise AI,</text>
+  <text x="110" y="402" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">translated.</text>
+
+  <rect x="110" y="442" width="120" height="1.5" fill="url(#hairline)"/>
+
+  <text x="110" y="495" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="22" fill="#b7c0bb" letter-spacing="0.2">Adoption · Partner ecosystems · Agents · Infrastructure</text>
+
+  <text x="1090" y="565" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#75e6c3" letter-spacing="0.18em">ai-lab1.com</text>
 </svg>
