@@ -1,8 +1,16 @@
 (function () {
   "use strict";
 
+  var docEl = document.documentElement;
   var prefersReducedMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Mark the document as JS-enabled. This is what gates the reveal-hide
+  // CSS rules — without this class the .reveal opacity-0 state never
+  // applies, so content stays visible if JS fails to load or run.
+  if (!prefersReducedMotion && "IntersectionObserver" in window) {
+    docEl.classList.add("js");
+  }
 
   // Current-year stamp in footer
   var yearTargets = document.querySelectorAll("[data-current-year]");
@@ -11,7 +19,6 @@
     target.textContent = String(currentYear);
   });
 
-  // Scroll-reveal: mark eligible elements then observe them
   function setupReveal() {
     if (prefersReducedMotion || !("IntersectionObserver" in window)) return;
 
@@ -30,8 +37,19 @@
     ];
 
     var elements = document.querySelectorAll(selectors.join(","));
+    if (!elements.length) return;
+
+    var viewport = window.innerHeight || docEl.clientHeight || 0;
+
     elements.forEach(function (el) {
       el.classList.add("reveal");
+      // Any element already on screen (or just below the fold) shows
+      // immediately. This prevents an above-the-fold flash and means the
+      // observer only has to handle genuinely off-screen content.
+      var rect = el.getBoundingClientRect();
+      if (rect.top < viewport * 1.1) {
+        el.classList.add("is-visible");
+      }
     });
 
     var observer = new IntersectionObserver(
@@ -47,11 +65,20 @@
     );
 
     elements.forEach(function (el) {
-      observer.observe(el);
+      if (!el.classList.contains("is-visible")) {
+        observer.observe(el);
+      }
     });
+
+    // Safety net: if anything is still hidden 1.2s after load (e.g. a
+    // browser quirk or layout shift kept it off the observer), reveal it.
+    window.setTimeout(function () {
+      elements.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    }, 1200);
   }
 
-  // Reading-progress bar (only on pages with .article-body)
   function setupReadingProgress() {
     var body = document.querySelector(".article-body");
     if (!body) return;
@@ -65,7 +92,7 @@
     var ticking = false;
     function update() {
       var rect = body.getBoundingClientRect();
-      var viewport = window.innerHeight || document.documentElement.clientHeight;
+      var viewport = window.innerHeight || docEl.clientHeight;
       var total = Math.max(1, rect.height - viewport);
       var scrolled = Math.min(Math.max(-rect.top, 0), total);
       var pct = scrolled / total;
@@ -83,7 +110,6 @@
     update();
   }
 
-  // Tag filter on the writing index page
   function setupTagFilter() {
     var filter = document.querySelector(".tag-filter");
     if (!filter) return;
@@ -91,7 +117,6 @@
     var cards = document.querySelectorAll(".article-list .article-card");
     if (!cards.length) return;
 
-    // Collect tag set from card data-tags
     var tagSet = Object.create(null);
     cards.forEach(function (card) {
       var raw = card.getAttribute("data-tags") || "";
@@ -107,6 +132,7 @@
       b.textContent = label;
       b.setAttribute("data-tag", value);
       b.setAttribute("aria-pressed", pressed ? "true" : "false");
+      if (value !== "*") b.id = "filter-" + value;
       return b;
     }
 
@@ -120,19 +146,33 @@
       filter.appendChild(makeButton(prettyTag(t), t, false));
     });
 
-    filter.addEventListener("click", function (e) {
-      var btn = e.target.closest("button[data-tag]");
-      if (!btn) return;
-      var selected = btn.getAttribute("data-tag");
+    function applyFilter(selected) {
       filter.querySelectorAll("button[data-tag]").forEach(function (b) {
-        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+        b.setAttribute("aria-pressed", b.getAttribute("data-tag") === selected ? "true" : "false");
       });
       cards.forEach(function (card) {
         var cardTags = (card.getAttribute("data-tags") || "").split(/\s+/);
         var match = selected === "*" || cardTags.indexOf(selected) !== -1;
         card.classList.toggle("is-hidden", !match);
       });
+    }
+
+    filter.addEventListener("click", function (e) {
+      var btn = e.target.closest("button[data-tag]");
+      if (!btn) return;
+      applyFilter(btn.getAttribute("data-tag"));
     });
+
+    // Deep link via ?tag=<slug> (used by footer "Topics" links).
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var deep = params.get("tag");
+      if (deep && tagSet[deep]) {
+        applyFilter(deep);
+      }
+    } catch (_) {
+      /* URLSearchParams unsupported — leave default filter state */
+    }
   }
 
   function prettyTag(slug) {

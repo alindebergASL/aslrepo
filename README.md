@@ -26,7 +26,6 @@ The site is hand-written HTML, CSS, and a small amount of vanilla JavaScript. Th
 ├── articles/
 │   ├── ai-adoption-partner-ecosystem/
 │   │   └── index.html                         # Essay
-│   ├── article-template.html                  # Copy this for new essays
 │   └── index.html                             # Writing archive + tag filter
 ├── deploy-ubuntu-nginx.sh                     # One-shot deploy: install Nginx, copy files, enable site
 ├── favicon.ico                                # 16/32/48 multi-size, generated from favicon.svg
@@ -41,7 +40,9 @@ The site is hand-written HTML, CSS, and a small amount of vanilla JavaScript. Th
 ├── site.js                                    # Scroll-reveal + reading progress + tag filter
 ├── site.webmanifest                           # PWA-style manifest
 ├── sitemap.xml
-└── styles.css
+├── styles.css
+└── templates/
+    └── article-template.html                  # Copy this for new essays (not deployed)
 ```
 
 ## Preview locally
@@ -60,7 +61,7 @@ The domain (`https://ai-lab1.com`) and LinkedIn URL (`https://www.linkedin.com/i
 
 ## Add a new article
 
-1. Copy `articles/article-template.html` to `articles/<slug>/index.html` and fill in every `UPDATE:` marker (title, description, canonical, dates, tags, JSON-LD).
+1. Copy `templates/article-template.html` to `articles/<slug>/index.html` and fill in every `UPDATE:` marker (title, description, canonical, dates, tags, JSON-LD). The `templates/` directory is intentionally outside `articles/` so its placeholder copy never ships to the live site.
 2. Add a card to `articles/index.html` inside `.article-list`:
    - Set `data-tags="tag-one tag-two"` (lowercase, kebab-case) so it shows up in the tag filter.
    - Include the date, reading-time estimate, tag pills, title link, and dek.
