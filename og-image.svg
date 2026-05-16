@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Andrew Lindeberg — Enterprise AI adoption and partner ecosystems</title>
+  <title id="title">Andrew Lindeberg — Practical AI notes for leaders, operators, and teams</title>
   <desc id="desc">Editorial preview image. Dark background with teal aurora glow, fine grid lines, and serif headline.</desc>
   <defs>
     <radialGradient id="aurora" cx="0.18" cy="0.12" r="0.8">
@@ -37,12 +37,13 @@
     <text x="60" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="600" fill="#f4efe7" letter-spacing="0.5">Andrew Lindeberg</text>
   </g>
 
-  <text x="110" y="320" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">Enterprise AI,</text>
-  <text x="110" y="402" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">translated.</text>
+  <text x="110" y="298" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">Practical AI notes</text>
+  <text x="110" y="375" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">for leaders, operators,</text>
+  <text x="110" y="452" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="400" font-style="italic" fill="#f4efe7" letter-spacing="-2">and teams.</text>
 
-  <rect x="110" y="442" width="120" height="1.5" fill="url(#hairline)"/>
+  <rect x="110" y="487" width="120" height="1.5" fill="url(#hairline)"/>
 
-  <text x="110" y="495" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="22" fill="#b7c0bb" letter-spacing="0.2">Adoption · Partner ecosystems · Agents · Infrastructure</text>
+  <text x="110" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="20" fill="#b7c0bb" letter-spacing="0.2">Agents · Adoption · Infrastructure · Security · Ecosystems</text>
 
   <text x="1090" y="565" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#75e6c3" letter-spacing="0.18em">ai-lab1.com</text>
 </svg>

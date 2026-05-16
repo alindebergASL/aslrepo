@@ -167,14 +167,22 @@
     var cards = document.querySelectorAll(".article-list .article-card");
     if (!cards.length) return;
 
-    var tagSet = Object.create(null);
+    // Map slug -> display label. Slugs come from data-tags (lowercase,
+    // kebab-case, URL-safe). Labels come from the matching .tag-list
+    // span in the same card, paired by index so acronyms like "AI" stay
+    // properly cased instead of getting title-cased into "Ai".
+    var tagLabels = Object.create(null);
     cards.forEach(function (card) {
-      var raw = card.getAttribute("data-tags") || "";
-      raw.split(/\s+/).forEach(function (t) {
-        if (t) tagSet[t] = true;
+      var slugs = (card.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+      var labelEls = card.querySelectorAll(".tag-list span");
+      slugs.forEach(function (slug, i) {
+        if (tagLabels[slug]) return;
+        var labelEl = labelEls[i];
+        tagLabels[slug] = labelEl ? labelEl.textContent.trim() : prettyTag(slug);
       });
     });
-    var tags = Object.keys(tagSet).sort();
+    var tagSet = tagLabels;
+    var tags = Object.keys(tagLabels).sort();
 
     function makeButton(label, value, pressed) {
       var b = document.createElement("button");
@@ -193,7 +201,7 @@
 
     filter.appendChild(makeButton("All", "*", true));
     tags.forEach(function (t) {
-      filter.appendChild(makeButton(prettyTag(t), t, false));
+      filter.appendChild(makeButton(tagLabels[t], t, false));
     });
 
     function applyFilter(selected) {

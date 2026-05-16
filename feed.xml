@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Andrew Lindeberg — Writing</title>
-  <subtitle>Essays and field notes on enterprise AI adoption, partner ecosystems, AI agents, infrastructure, security, and the translation layer between technical capability and business value.</subtitle>
+  <subtitle>Practical notes on AI agents, enterprise adoption, infrastructure, security, and the translation layer between technical capability and real-world value.</subtitle>
   <link href="https://ai-lab1.com/feed.xml" rel="self"/>
   <link href="https://ai-lab1.com/" rel="alternate"/>
   <id>https://ai-lab1.com/</id>
@@ -13,7 +13,22 @@
   <rights>© 2026 Andrew Lindeberg</rights>
 
   <entry>
-    <title>Why AI Adoption Is a Partner Ecosystem Problem, Not Just a Product Problem</title>
+    <title>AI Agents Are Not the Deployment</title>
+    <link href="https://ai-lab1.com/articles/ai-agents-are-not-the-deployment/" rel="alternate"/>
+    <id>https://ai-lab1.com/articles/ai-agents-are-not-the-deployment/</id>
+    <published>2026-05-16T00:00:00Z</published>
+    <updated>2026-05-16T00:00:00Z</updated>
+    <author>
+      <name>Andrew Lindeberg</name>
+    </author>
+    <category term="AI Agents"/>
+    <category term="Enterprise AI"/>
+    <category term="Workflows"/>
+    <summary>They are the beginning of the harder enterprise work — data access, tools, workflows, governance, and the people who have to live with the results.</summary>
+  </entry>
+
+  <entry>
+    <title>Why AI Adoption Needs an Ecosystem, Not Just a Product</title>
     <link href="https://ai-lab1.com/articles/ai-adoption-partner-ecosystem/" rel="alternate"/>
     <id>https://ai-lab1.com/articles/ai-adoption-partner-ecosystem/</id>
     <published>2026-05-01T00:00:00Z</published>
@@ -22,8 +37,8 @@
       <name>Andrew Lindeberg</name>
     </author>
     <category term="Enterprise AI"/>
-    <category term="Partner Ecosystems"/>
+    <category term="Ecosystems"/>
     <category term="AI Adoption"/>
-    <summary>What enterprise technology taught me about how AI will actually get bought, deployed, governed, and scaled.</summary>
+    <summary>How partners, operators, security teams, and technical advisors help move AI from demo to production.</summary>
   </entry>
 </feed>

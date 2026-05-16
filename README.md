@@ -1,6 +1,6 @@
 # Andrew Lindeberg — Personal Site
 
-The source for [ai-lab1.com](https://ai-lab1.com) — a personal POV site for Andrew Lindeberg, focused on enterprise AI adoption, partner ecosystems, AI agents, infrastructure, security, and the translation layer between technical capability and business value.
+The source for [ai-lab1.com](https://ai-lab1.com) — a personal POV site for Andrew Lindeberg, with practical notes for leaders, operators, and teams on AI agents, enterprise adoption, infrastructure, security, and the translation layer between technical capability and real-world value.
 
 The site is hand-written HTML, CSS, and a small amount of vanilla JavaScript. There is no build system, package manager, framework, analytics, or tracking. It is meant to be easy to read, edit, and deploy on a single Ubuntu / Nginx host.
 
@@ -25,7 +25,9 @@ The site is hand-written HTML, CSS, and a small amount of vanilla JavaScript. Th
 ├── apple-touch-icon.png                       # 180×180, generated from favicon.svg
 ├── articles/
 │   ├── ai-adoption-partner-ecosystem/
-│   │   └── index.html                         # Essay
+│   │   └── index.html                         # Essay: Why AI Adoption Needs an Ecosystem
+│   ├── ai-agents-are-not-the-deployment/
+│   │   └── index.html                         # Essay: AI Agents Are Not the Deployment
 │   └── index.html                             # Writing archive + tag filter
 ├── deploy-ubuntu-nginx.sh                     # One-shot deploy: install Nginx, copy files, enable site
 ├── favicon.ico                                # 16/32/48 multi-size, generated from favicon.svg
